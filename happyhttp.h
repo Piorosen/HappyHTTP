@@ -42,8 +42,6 @@ struct in_addr;
 
 namespace happyhttp
 {
-
-
 class Response;
 
 // Helper Functions
@@ -126,10 +124,9 @@ class Wobbly
 {
 public:
 	Wobbly( const char* fmt, ... );
-	const char* what() const
-		{ return m_Message; }
+	const char* what() const { return m_Message; }
 protected:
-	enum { MAXLEN=256 };
+	enum { MAXLEN=256 };	
 	char m_Message[ MAXLEN ];
 };
 
@@ -173,7 +170,7 @@ public:
 
 	// Update the connection (non-blocking)
 	// Just keep calling this regularly to service outstanding requests.
-	void pump(int milisec=10); //10 miliseconds to prevent high cpu load
+	void pump();
 
 	// any requests still outstanding?
 	bool outstanding() const
@@ -329,5 +326,4 @@ private:
 
 
 #endif // HAPPYHTTP_H
-
 
